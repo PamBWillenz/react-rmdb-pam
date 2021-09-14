@@ -2,8 +2,15 @@ import { useState, useEffect, useRef } from "react";
 // API
 import API from "../API";
 
+const initialState = {
+  page: 0,
+  results: [],
+  total_pages: 0,
+  total_results: 0,
+};
+
 export const useHomeFetch = () => {
-  const [state, setState] = useState();
+  const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
