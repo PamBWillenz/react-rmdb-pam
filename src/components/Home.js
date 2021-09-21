@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 
 // Components
-
+import HeroImage from "./HeroImage";
 // Hook
 import { useHomeFetch } from "../hooks/useHomeFetch";
 // Image
