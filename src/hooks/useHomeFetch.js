@@ -1,30 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 // API
-import API from '../API';
+import API from "../API";
 
 const initialState = {
   page: 0,
   results: [],
   total_pages: 0,
-  total_results: 0
+  total_results: 0,
 };
 
 export const useHomeFetch = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const fetchMovies = async (page, searchTerm = '') => {
+  console.log(searchTerm);
+
+  const fetchMovies = async (page, searchTerm = "") => {
     try {
       setError(false);
       setLoading(true);
 
       const movies = await API.fetchMovies(searchTerm, page);
 
-      setState(prev => ({
+      setState((prev) => ({
         ...movies,
         results:
-          page > 1 ? [...prev.results, ...movies.results] : [...movies.results]
+          page > 1 ? [...prev.results, ...movies.results] : [...movies.results],
       }));
     } catch (error) {
       setError(true);
@@ -37,5 +40,5 @@ export const useHomeFetch = () => {
     fetchMovies(1);
   }, []);
 
-  return { state, loading, error };
+  return { state, loading, error, setSearchTerm };
 };
