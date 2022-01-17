@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStye = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
     :root { 
         --maxWidth: 1280px;
         --white: #GGG;
